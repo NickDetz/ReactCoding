@@ -2,7 +2,7 @@ import React, {Fragment, Component} from 'react';
 import Navingbar from './components/headercomponents/Navbar'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UserPerson from './components/Usercomponents/UserPerson'
+import Users from './components/Usercomponents/Users'
 
 class App extends Component {
 
@@ -18,7 +18,7 @@ class App extends Component {
       <div className="App">
       </div>
       <Navingbar title='My Github Finder'/>
-      <UserPerson/>
+      <Users/>
 
       </Fragment>
     );
