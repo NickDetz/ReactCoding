@@ -6,6 +6,8 @@ import Users from './components/Usercomponents/Users'
 import {Container} from 'react-bootstrap';
 import axios from 'axios';
 import Search from './components/Usercomponents/Search'
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom' 
+import About from './components/Pages/About';
 
 
 class App extends Component {
@@ -38,15 +40,27 @@ class App extends Component {
     render() {
     return (
       <Fragment>
-        
-      <div className="App">
+        <Router>
+        <div className="App">
       </div>
       <Navingbar title='My Github Finder'/>
-      <Search/>
+
+      <Switch>
+      <Route exact path='/' render={props =>(
+        <Fragment>
+
+<Search/>
       <Container>
       <Users loading = {this.state.loading} users = {this.state.users} />
       </Container>
-      
+        </Fragment>
+
+      )}></Route>
+
+        <Route exact path='/about' component={About}/>
+
+      </Switch>
+       </Router>
       
 
       </Fragment>
