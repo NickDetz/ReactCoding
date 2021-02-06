@@ -9,6 +9,11 @@ import { useState } from 'react'
         
         console.log(searchBarInput);
     }
+
+    const ClearSearch = (searchBarInput) => {
+        searchBarInput = "";
+        console.log(searchBarInput) 
+    }
      
 
     return (
@@ -20,6 +25,8 @@ import { useState } from 'react'
       
        onChange = {e => setSearch(e.target.value)} />
       <Button variant="primary" onClick={e => UseSearchBar(searchBarInput)} >Search</Button>
+      <Button variant='secondary' onClick={e => ClearSearch(searchBarInput)}>Clear</Button>  
+
     </Form>
     </Navbar>
         </div>
