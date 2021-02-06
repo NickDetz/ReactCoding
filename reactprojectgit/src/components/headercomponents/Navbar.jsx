@@ -1,25 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Navbar} from 'react-bootstrap';
 import PropTypes from 'prop-types'
 
 
-class Navingbar extends Component {
-
-    static defaultProps = {
-        title: 'I did not load in correctly'
-    }
-
-    static propTypes = {
-        title: PropTypes.string.isRequired
-    }
-    render() {
+const Navingbar = (props) => {
         return (
             <Navbar bg="dark">
                 <i className="fas fa-diagnoses fa-4x" style={{color : 'green'}}></i>
-                <h1 style={{color : 'gray'}}>{this.props.title}</h1>
+                <h1 style={{color : 'gray'}}>{props.title}</h1>
             </Navbar>
         )
-    }
+    
+}
+
+Navingbar.defaultProps = {
+    title: 'I did not load in correctly'
+}
+
+Navingbar.propTypes = {
+    title: PropTypes.string.isRequired
 }
 
 export default Navingbar;
