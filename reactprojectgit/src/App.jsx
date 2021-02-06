@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Users from './components/Usercomponents/Users'
 import {Container} from 'react-bootstrap';
 import axios from 'axios';
-import Spinners from './components/headercomponents/spinner';
+
 
 class App extends Component {
 
@@ -18,10 +18,13 @@ class App extends Component {
 
     async componentDidMount() {
 
+      
+
       this.setState({loading: true});
 
       const res = await axios
-      .get('https://api.github.com/users')
+      .get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&=client_secret=
+      ${process.env.REACT_APP_GIT_CLIENT_SECRET}`)
       // .then(res => console.log(res.data));
       this.setState({users: res.data, loading: false});
 
