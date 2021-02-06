@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Users from './components/Usercomponents/Users'
 import {Container} from 'react-bootstrap';
 import axios from 'axios';
+import Search from './components/Usercomponents/Search'
 
 
 class App extends Component {
@@ -41,7 +42,7 @@ class App extends Component {
       <div className="App">
       </div>
       <Navingbar title='My Github Finder'/>
-      
+      <Search/>
       <Container>
       <Users loading = {this.state.loading} users = {this.state.users} />
       </Container>
