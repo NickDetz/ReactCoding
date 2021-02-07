@@ -1,18 +1,23 @@
 import React from 'react'
 import {Form, FormControl, Button, Navbar} from 'react-bootstrap'
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
- const Search = () => {
-    const [searchBarInput, setSearch] = useState("");
+ const Search = ({searchUsers, showClear, clearUsers, setAlert}) => {
+    const [search, setSearch] = useState("");
 
-    const UseSearchBar = (searchBarInput) => {
-        
-        console.log(searchBarInput);
+    const UseSearchBar = (search) => {
+        if(search === ''){
+            setAlert('Please enter something in the searchbar', 'light')
+        }else{
+            searchUsers(search);
+            setSearch('')
+        }
     }
 
-    const ClearSearch = (searchBarInput) => {
-        searchBarInput = "";
-        console.log(searchBarInput) 
+    const ClearSearch = (search) => {
+        setSearch("");
+        console.log(search) 
     }
      
 
@@ -24,8 +29,8 @@ import { useState } from 'react'
       className="mr-sm-2"
       
        onChange = {e => setSearch(e.target.value)} />
-      <Button variant="primary" onClick={e => UseSearchBar(searchBarInput)} >Search</Button>
-      <Button variant='secondary' onClick={e => ClearSearch(searchBarInput)}>Clear</Button>  
+      <Button variant="primary" onClick={e => UseSearchBar(search)} >Search</Button>
+      <Button variant='secondary' onClick={e => ClearSearch(search)}>Clear</Button>  
 
     </Form>
     </Navbar>

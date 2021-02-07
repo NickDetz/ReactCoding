@@ -19,19 +19,33 @@ class App extends Component {
   }
 
 
-    async componentDidMount() {
+    // async componentDidMount() {
 
       
 
-      this.setState({loading: true});
+      // this.setState({loading: true});
+
+      // const res = await axios
+      // .get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&=client_secret=
+      // ${process.env.REACT_APP_GIT_CLIENT_SECRET}`)
+      // // .then(res => console.log(res.data));
+      // this.setState({users: res.data, loading: false});
+
+      
+    // }
+
+    searchUsers = async search => {
+      
+      
 
       const res = await axios
-      .get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&=client_secret=
+      .get(`https://api.github.com/search/users?q=${search}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&=client_secret=
       ${process.env.REACT_APP_GIT_CLIENT_SECRET}`)
       // .then(res => console.log(res.data));
-      this.setState({users: res.data, loading: false});
+      this.setState({users: res.data.items, loading: false});
 
-      console.log(res.data);
+      console.log(res.data.items)
+
     }
 
   
@@ -49,7 +63,7 @@ class App extends Component {
       <Route exact path='/' render={props =>(
         <Fragment>
 
-<Search/>
+        <Search searchUsers={this.searchUsers}/>
       <Container>
       <Users loading = {this.state.loading} users = {this.state.users} />
       </Container>
