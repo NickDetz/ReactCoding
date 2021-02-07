@@ -34,6 +34,8 @@ class App extends Component {
       
     // }
 
+
+    //Searching users from Github
     searchUsers = async search => {
       
       
@@ -47,6 +49,8 @@ class App extends Component {
       console.log(res.data.items)
 
     }
+
+    clearUsers = () => this.setState({users: [],loading: false})
 
   
 
@@ -63,7 +67,7 @@ class App extends Component {
       <Route exact path='/' render={props =>(
         <Fragment>
 
-        <Search searchUsers={this.searchUsers}/>
+        <Search searchUsers={this.searchUsers}  clearUsers={this.clearUsers}/>
       <Container>
       <Users loading = {this.state.loading} users = {this.state.users} />
       </Container>

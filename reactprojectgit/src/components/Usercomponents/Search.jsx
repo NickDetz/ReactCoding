@@ -18,6 +18,7 @@ import PropTypes from 'prop-types'
     const ClearSearch = (search) => {
         setSearch("");
         console.log(search) 
+        clearUsers();
     }
      
 
@@ -30,12 +31,15 @@ import PropTypes from 'prop-types'
       
        onChange = {e => setSearch(e.target.value)} />
       <Button variant="primary" onClick={e => UseSearchBar(search)} >Search</Button>
-      <Button variant='secondary' onClick={e => ClearSearch(search)}>Clear</Button>  
+       
 
     </Form>
+    <Button variant='secondary' onClick={e => ClearSearch(search)}>Clear</Button>
     </Navbar>
         </div>
     )
 }
+
+ 
 
 export default Search;
