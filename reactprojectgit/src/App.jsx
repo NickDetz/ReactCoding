@@ -8,6 +8,7 @@ import axios from 'axios';
 import Search from './components/Usercomponents/Search'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom' 
 import About from './components/Pages/About';
+import Alerts from './components/headercomponents/Alert';
 
 
 class App extends Component {
@@ -15,7 +16,8 @@ class App extends Component {
 
   state = {
     users: [], 
-    loading : false
+    loading : false,
+    alert : null
   }
 
 
@@ -52,7 +54,11 @@ class App extends Component {
 
     clearUsers = () => this.setState({users: [],loading: false})
 
-  
+    setAlert = (msg, type) => {
+      this.setState({ alert: {msg: msg, type: type}})
+
+      setTimeout(() => this.setState({alert: null}), 5000)
+    }  
 
    
     render() {
@@ -66,9 +72,10 @@ class App extends Component {
       <Switch>
       <Route exact path='/' render={props =>(
         <Fragment>
-
+          <Alerts alert={this.state.alert}/>
         <Search searchUsers={this.searchUsers}  clearUsers={this.clearUsers}
-        showClear={this.state.users.length > 0 ? true : false}/>
+        showClear={this.state.users.length > 0 ? true : false}
+        setAlert={this.setAlert}/>
       <Container>
       <Users loading = {this.state.loading} users = {this.state.users} />
       </Container>

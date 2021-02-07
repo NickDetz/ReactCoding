@@ -8,10 +8,11 @@ import PropTypes from 'prop-types'
 
     const UseSearchBar = (search) => {
         if(search === ''){
-            setAlert('Please enter something in the searchbar', 'light')
+            setAlert('Please enter something in the searchbar', 'danger')
         }else{
             searchUsers(search);
             setSearch('')
+            
         }
     }
 
