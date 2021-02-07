@@ -34,7 +34,8 @@ import PropTypes from 'prop-types'
        
 
     </Form>
-    <Button variant='secondary' onClick={e => ClearSearch(search)}>Clear</Button>
+    {showClear && <Button variant='secondary' onClick={e => ClearSearch(search)}>Clear</Button> }
+    
     </Navbar>
         </div>
     )

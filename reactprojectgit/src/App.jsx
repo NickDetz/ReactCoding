@@ -67,7 +67,8 @@ class App extends Component {
       <Route exact path='/' render={props =>(
         <Fragment>
 
-        <Search searchUsers={this.searchUsers}  clearUsers={this.clearUsers}/>
+        <Search searchUsers={this.searchUsers}  clearUsers={this.clearUsers}
+        showClear={this.state.users.length > 0 ? true : false}/>
       <Container>
       <Users loading = {this.state.loading} users = {this.state.users} />
       </Container>
