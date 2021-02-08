@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 
- class Userfront extends Component {
+export default class UserPage extends Component {
     render() {
         return (
             <div>
-                User
+                
             </div>
         )
     }
 }
 
-export default Userfront;
