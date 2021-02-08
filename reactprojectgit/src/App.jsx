@@ -9,6 +9,7 @@ import Search from './components/Usercomponents/Search'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom' 
 import About from './components/Pages/About';
 import Alerts from './components/headercomponents/Alert';
+import Userfront from './components/Usercomponents/Userfront'
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
 
   state = {
     users: [], 
+    user: {},
     loading : false,
     alert : null
   }
@@ -51,7 +53,7 @@ class App extends Component {
       console.log(res.data.items)
 
     }
-
+    //Alert Functionality on the website
     clearUsers = () => this.setState({users: [],loading: false})
 
     setAlert = (msg, type) => {
@@ -59,6 +61,16 @@ class App extends Component {
 
       setTimeout(() => this.setState({alert: null}), 5000)
     }  
+
+    getUser = async (username) => {
+      const res = await axios
+      .get(`https://api.github.com/users${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&=client_secret=
+      ${process.env.REACT_APP_GIT_CLIENT_SECRET}`)
+      // .then(res => console.log(res.data));
+      this.setState({user: res.data, loading: false});
+
+      console.log(res.data.items)
+    }
 
    
     render() {
@@ -84,7 +96,9 @@ class App extends Component {
       )}></Route>
 
         <Route exact path='/about' component={About}/>
-
+        <Route exact path='user/:login' render ={props => (
+            <Userfront {...props} getUser={this.getUser} user={this.state.user} loading = {this.state.loading}/>
+        )}/>
       </Switch>
        </Router>
       
